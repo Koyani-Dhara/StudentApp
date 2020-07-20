@@ -1,0 +1,60 @@
+<div class="container">
+    <h1>Edit Student</h1>
+    <form [formGroup]="updateForm"  (ngSubmit)="onSubmit()" novalidate>
+         <div class="form-group">
+          
+            <input type="hidden" formControlName="id" class="form-control" />
+        </div> 
+        <div class="form-group">
+            <label>RollNo</label>
+            <input type="number" formControlName="rollNo" class="form-control">
+            <label class="text-danger" *ngIf="updateForm.get('rollNo').touched && 
+            updateForm.get('rollNo').errors?.required">RollNo is required</label>
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="name" class="form-control" maxlength="20">
+            <label class="text-danger" *ngIf="updateForm.get('name').touched && 
+            updateForm.get('name').errors?.required">Name is required</label> 
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" formControlName="email" class="form-control">
+            <label class="text-danger" *ngIf="updateForm.get('email').touched && 
+            updateForm.get('email').errors?.required">Email is required</label>
+            <label class="text-danger" *ngIf="updateForm.get('email').touched && 
+            updateForm.get('email').errors?.email">Email is Invaild</label> 
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="text" formControlName="age" class="form-control" >
+             <label class="text-danger" *ngIf="updateForm.get('age').touched && 
+             updateForm.get('age').errors?.required">Age is required</label> 
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" formControlName="date" class="form-control">
+             <label class="text-danger" *ngIf="updateForm.get('date').touched && 
+             updateForm.get('date').errors?.required">Date is required</label> 
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <div>
+              <input id="male" type="radio" value="true" name="isMale" formControlName="isMale" checked="true" (change)="changeGender($event)">
+              <label for="male">Male</label>
+           </div>
+   
+           <div>
+              <input id="female" type="radio" value="false" name="isMale" formControlName="isMale" (change)="changeGender($event)">
+              <label for="female">Female</label>
+           </div>
+              
+          
+            <label class="text-danger" *ngIf="updateForm.get('isMale').touched && 
+            updateForm.get('isMale').errors?.required">Gender is required</label>
+         
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!updateForm.valid">Submit</button>  
+    </form> 
+</div>
+

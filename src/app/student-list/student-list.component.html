@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Student List</h1>
+      <button type="button" class="btn btn-primary" routerLink="/AddStudent/">Add Student</button>  
+      <br>
+    <br>   
+    <table class="table table-responsive table-striped table-bordered" style="width:70%">
+        <thead>
+            <tr>
+               
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>IsMale</th>
+                <th>Date</th>    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students">
+             
+                <td>{{student.rollNo}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.age}}</td>
+                <td>{{student.isMale}}</td>
+                <td>{{student.date}}</td>
+                <td>
+                  
+                    <button type="submit" class="btn btn-primary"  (click)="editStudent(student,student.id)">Edit</button>
+                    <button type="submit" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteStudent(student.id)">Delete</button> 
+              
+                </td>  
+            </tr>
+        </tbody>
+        
+    </table>
+</div>
